@@ -6,6 +6,8 @@ const { Meta } = Card;
 
 const AlbumCard: FC<Album> = (props) => {
 
+    const defaulImage = "https://images.unsplash.com/photo-1534854638093-bada1813ca19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60";
+
     const {
         images = [{ url: "https://images.unsplash.com/photo-1534854638093-bada1813ca19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" }],
         name = "",
@@ -17,7 +19,7 @@ const AlbumCard: FC<Album> = (props) => {
         <Card
             hoverable
             style={{ width: 240 }}
-            cover={<img src={images[0]?.url} alt="Image" />}
+            cover={<img src={images[0] ? images[0].url : defaulImage} alt="Image" />}
         >
             <Meta title={name} description={releaseDate} />
         </Card>
