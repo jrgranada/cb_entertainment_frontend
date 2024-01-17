@@ -45,7 +45,7 @@ export const counter = createSlice({
       state.value -= action.payload;
     },
   },
-  
+
 });
 
 export const {

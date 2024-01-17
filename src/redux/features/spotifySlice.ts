@@ -9,12 +9,25 @@ export const searchByQuery = createAsyncThunk(
     'search/query',
     async (params: Params, thunkAPI) => {
 
-        try {
+        // URL a la que realizar la solicitud POST
+        const url = 'https://localhost:7145/api/SpotifyApi/search';
 
-            const response = await fetch("https://localhost:7005/api/spotify/search-by-query?accessToken=" + params.token + "&query=" + params.query, {
-                method: "GET",
+        // Datos a enviar en el cuerpo de la solicitud
+        const body = {
+            token: params.token,
+            query: params.query,
+            types: [1,2,3]
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
                 cache: "no-cache",
-                mode: "cors",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
             });
 
             const data = await response.json();
@@ -45,8 +58,8 @@ export const search = createSlice({
     },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(searchByQuery.fulfilled, (state, action) => { 
-            state.albumList = action.payload.albumes;
+        builder.addCase(searchByQuery.fulfilled, (state, action) => {
+            state.albumList = action.payload.albums;
             state.artistList = action.payload.artists;
             state.trackList = action.payload.tracks;
         })

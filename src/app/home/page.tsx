@@ -107,13 +107,13 @@ export default function Home() {
                                 <div className="container_album_cards">
                                     {trackList.map((data, index) => (
                                         index < 8 &&
-                                        (<TrackCard key={index} 
-                                            image={data.album.images[0].url} 
-                                            name={data.name} 
-                                            artists={data.artists} 
+                                        (<TrackCard key={index}
+                                            image={data.album.images[0].url}
+                                            name={data.name}
+                                            artists={data.artists}
                                             artistName={data.artists[0].name}
-                                            album={ data.album}
-                                            />)
+                                            album={data.album}
+                                        />)
                                     ))}
                                 </div>
                             </div>
