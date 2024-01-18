@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PRUEBA TÉCNICA CB
 
-## Getting Started
+## Contenido
+  * [Descripción](#descripcion)
+  * [Prerrequisitos](#prerrequisitos)
+  * [Despliegue en Docker utilizando el docker-compose](#despliegue)
 
-First, run the development server:
+<a name="descripcion"></a>
+## Descripción
+
+Este proyecto contiene la información necesaria para desplegar el frontend del proyecto en Docker
+
+### Framework utilizado:
+* Next.JS: Versión 13.4.4 [Sitio Oficial][LinkNextJS]
+
+[LinkNextJS]: https://nextjs.org/
+
+<a name="prerrequisitos"></a>
+## Prerrequisitos
+
+* Tener instalado Docker [Sitio Oficial][LinkDocker]
+
+[LinkDocker]: https://www.docker.com/products/docker-desktop/
+
+* Se requiere de conexión a Internet para descargar el proyecto, la imágen base de Node, además de las librerías y dependencias.
+
+* Tener desplegado el backend [Link al Repositorio][LinkBackend]
+
+[LinkBackend]: hhttps://github.com/jrgranada/cb_entertainment_backend/tree/main
+
+<a name="despliegue"></a>
+## Despliegue en Docker
+
+### Clonar el proyecto:
+Desde la línea de comando del sistema, ingrese a la carpeta donde quiere descargar el proyecto y ejecute la siguiente instrucción:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git https://github.com/jrgranada/cb_entertainment_frontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configuración previa al despliege
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+La única configuración previa al despliegue que se debe realizar es indicarle a la aplicación cuál es la URL donde se encuentra desplegado el backend, para ello debe seguir las siguientes instrucciones:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Ubique el archivo llamado ```.env``` que se encuentra dentro de la carpeta del proyecto.
 
-## Learn More
+2. Abra el archivo con un editor de texto plano, como por ejemplo el bloc de notas.
 
-To learn more about Next.js, take a look at the following resources:
+3. Ubique la clave ```NEXT_PUBLIC_URL_BACKEND``` que tiene el valor ```https://localhost:32776```, usted debe cambiar la URL o en su defecto sólo el puerto, de acuerdo al asignado al backend durante el despliegue.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Guarde los cambios en el archivo y ciérrelo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Despliegue de la solución
 
-## Deploy on Vercel
+Para el despliegue de la solución se debe ejecutar la siguiente instrucción desde la línea de comandos, estando ubicado dentro de la carpeta del proyecto:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker-compose -p "cb_entertainment_frontend" up -d
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Accediendo a la aplicación
+
+Para acceder a la aplicación vaya la url http://localhost:3000
