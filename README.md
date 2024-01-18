@@ -35,7 +35,7 @@ Este proyecto contiene la información necesaria para desplegar el frontend del 
 Desde la línea de comando del sistema, ingrese a la carpeta donde quiere descargar el proyecto y ejecute la siguiente instrucción:
 
 ```bash
-git https://github.com/jrgranada/cb_entertainment_frontend.git
+git clone https://github.com/jrgranada/cb_entertainment_frontend.git
 ```
 
 ### Configuración previa al despliege
