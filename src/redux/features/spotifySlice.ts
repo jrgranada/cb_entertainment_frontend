@@ -8,9 +8,9 @@ interface Params {
 export const searchByQuery = createAsyncThunk(
     'search/query',
     async (params: Params, thunkAPI) => {
-
+        
         // URL a la que realizar la solicitud POST
-        const url = 'https://localhost:7145/api/SpotifyApi/search';
+        const url = `${process.env.NEXT_PUBLIC_URL_BACKEND}${process.env.NEXT_PUBLIC_URI_SEARCH_SPOTIFY}`;
 
         // Datos a enviar en el cuerpo de la solicitud
         const body = {
