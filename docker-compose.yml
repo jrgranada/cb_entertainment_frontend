@@ -6,14 +6,14 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports: 
-      - "3000:3000"
+      - ${APP_PORT}:3000
     networks:
       - cb-network
     restart: always
     environment:
-      - SPOTIFY_CLIENT_ID=e385c59f1a5649db8c6f952be507d1e9
-      - SPOTIFY_CLIENT_SECRET=253cd4b25c01439baeeaf289514a614d
-      - NEXTAUTH_SECRET=J1OLjcHlKfBi3oZz8P9x
+      SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
+      SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
 networks:
   cb-network:
     driver: bridge

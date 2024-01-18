@@ -38,7 +38,7 @@ COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE ${APP_PORT}
 
 ENTRYPOINT ["sh","/app/entrypoint.sh"]
 
